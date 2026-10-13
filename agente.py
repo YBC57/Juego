@@ -73,6 +73,7 @@ def agente_medio(tablero):
 
 
 
+
 def minimax(tablero, maximizando, profundidad=0):
     """Evalúa resultados y prioriza las victorias más rápidas."""
 
@@ -137,6 +138,7 @@ def agente_dificil(tablero):
                 mejor_posicion = posicion
 
     return mejor_posicion
+
 
 
 def elegir_jugada(tablero, dificultad):

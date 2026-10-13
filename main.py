@@ -158,7 +158,7 @@ def reiniciar():
 # INTERFAZ GRÁFICA
 
 ventana = tk.Tk()
-ventana.title("Agentes Inteligentes - Tres en raya")
+ventana.title("Agente Inteligente - Gato")
 ventana.configure(bg=FONDO)
 
 # Tamaño compacto para que el botón quede visible.
@@ -184,7 +184,7 @@ ventana.geometry(f"{ANCHO}x{ALTO}+{x}+{y}")
 
 titulo = tk.Label(
     ventana,
-    text="TRES EN RAYA",
+    text="Gato",
     font=("Arial", 23, "bold"),
     bg=FONDO,
     fg=TEXTO
