@@ -83,20 +83,20 @@ def finalizar_partida(mensaje, resultado):
 
     actualizar_marcador()
     estado_label.config(text=mensaje)
-    messagebox.showinfo("Fin de la partida", mensaje)
+    messagebox.showinfo("Resultado de la partida", mensaje)
 
 
 def actualizar_estado():
     ganador = obtener_ganador(tablero)
 
     if ganador == HUMANO:
-        finalizar_partida("¡Ganaste!", "victoria")
+        finalizar_partida("🏆 ¡Ganaste!", "victoria")
         return True
     if ganador == AGENTE:
-        finalizar_partida("Perdiste. El agente ha ganado.", "derrota")
+        finalizar_partida("😿 Perdiste. El agente ha ganado.", "derrota")
         return True
     if "" not in tablero:
-        finalizar_partida("¡Empate!", "empate")
+        finalizar_partida("🤝 ¡Empate!", "empate")
         return True
     return False
 
@@ -200,7 +200,7 @@ def salir():
 
 def mostrar_reglas():
     mensaje = (
-        "REGLAS DE GATO\n\n"
+        "REGLAS DE TRES EN RAYA\n\n"
         "1. El tablero tiene 3 filas y 3 columnas.\n\n"
         "2. Tú juegas con X y el agente con O.\n\n"
         "3. Los turnos se realizan de manera alternada.\n\n"
@@ -217,13 +217,13 @@ def mostrar_reglas():
 pantalla_menu = tk.Frame(ventana, bg=FONDO)
 
 titulo_menu = tk.Label(
-    pantalla_menu, text="Gato",
-    font=("Arial", 27, "bold"), bg=FONDO, fg=TEXTO
+    pantalla_menu, text="🐱 GATO",
+    font=("Segoe UI Emoji", 27, "bold"), bg=FONDO, fg=TEXTO
 )
 titulo_menu.pack(pady=(65, 8))
 
 subtitulo_menu = tk.Label(
-pantalla_menu, text="JUEGA CONTRA EL AGENTE INTELIGENTE",
+    pantalla_menu, text="PROYECTO DE AGENTES INTELIGENTES",
     font=("Arial", 10, "bold"), bg=FONDO, fg=AZUL
 )
 subtitulo_menu.pack(pady=(0, 20))
@@ -256,7 +256,7 @@ selector_dificultad["menu"].config(
 selector_dificultad.pack(pady=5)
 
 boton_jugar = tk.Button(
-    pantalla_menu, text="JUGAR", font=("Arial", 14, "bold"),
+    pantalla_menu, text="▶  JUGAR", font=("Segoe UI Emoji", 14, "bold"),
     bg=AZUL, fg=FONDO, activebackground="#7DD3FC",
     relief="flat", cursor="hand2", command=iniciar_partida, width=17
 )
@@ -264,14 +264,14 @@ boton_jugar.pack(pady=(28, 10), ipady=6)
 
 # BOTÓN NUEVO: REGLAS DEL JUEGO
 boton_reglas = tk.Button(
-    pantalla_menu, text="Reglas del juego", font=("Arial", 11),
+    pantalla_menu, text="📖  Reglas del juego", font=("Segoe UI Emoji", 11),
     bg=CASILLA, fg=TEXTO, activebackground=CASILLA_HOVER,
     relief="flat", cursor="hand2", command=mostrar_reglas, width=17
 )
 boton_reglas.pack(pady=5, ipady=4)
 
 boton_salir = tk.Button(
-    pantalla_menu, text="Salir", font=("Arial", 11),
+    pantalla_menu, text="🚪  Salir", font=("Segoe UI Emoji", 11),
     bg=CASILLA, fg=TEXTO, activebackground=CASILLA_HOVER,
     relief="flat", cursor="hand2", command=salir, width=17
 )
@@ -288,8 +288,8 @@ pie_menu.pack(side="bottom", pady=20)
 pantalla_juego = tk.Frame(ventana, bg=FONDO)
 
 titulo_juego = tk.Label(
-    pantalla_juego, text="Gato",
-    font=("Arial", 23, "bold"), bg=FONDO, fg=TEXTO
+    pantalla_juego, text="🐱 GATO",
+    font=("Segoe UI Emoji", 23, "bold"), bg=FONDO, fg=TEXTO
 )
 titulo_juego.pack(pady=(22, 4))
 
@@ -340,15 +340,15 @@ for fila in range(3):
         botones.append(boton)
 
 boton_reiniciar = tk.Button(
-    pantalla_juego, text="Reiniciar partida",
-    font=("Arial", 11, "bold"), bg=AZUL, fg=FONDO,
+    pantalla_juego, text="🔄  Reiniciar partida",
+    font=("Segoe UI Emoji", 11, "bold"), bg=AZUL, fg=FONDO,
     activebackground="#7DD3FC", relief="flat", cursor="hand2",
     command=reiniciar
 )
 boton_reiniciar.pack(pady=(12, 7), ipadx=10, ipady=4)
 
 boton_menu = tk.Button(
-    pantalla_juego, text="Volver al menú", font=("Arial", 10),
+    pantalla_juego, text="🏠  Volver al menú", font=("Segoe UI Emoji", 10),
     bg=CASILLA, fg=TEXTO, activebackground=CASILLA_HOVER,
     relief="flat", cursor="hand2", command=mostrar_menu
 )
