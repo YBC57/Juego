@@ -1,7 +1,9 @@
+//Yuleisi Barrera Castro
+//Itzel Gudiño Garcia
+
 import tkinter as tk
 from tkinter import messagebox
 from agente import elegir_jugada
-
 
 # CONFIGURACIÓN
 FONDO = "#172033"
@@ -145,7 +147,6 @@ def jugar(posicion):
         estado_label.config(text="Turno del agente...")
         turno_pendiente = ventana.after(400, turno_agente)
 
-
 # REINICIAR PARTIDA
 def reiniciar():
     global tablero, partida_terminada, turno_pendiente
@@ -170,7 +171,6 @@ def reiniciar():
         )
 
     estado_label.config(text="Tu turno: coloca una X", fg=AZUL)
-
 
 # NAVEGACIÓN ENTRE PANTALLAS
 def mostrar_menu():
@@ -262,7 +262,7 @@ boton_jugar = tk.Button(
 )
 boton_jugar.pack(pady=(28, 10), ipady=6)
 
-# BOTÓN NUEVO: REGLAS DEL JUEGO
+# BOTÓN  REGLAS DEL JUEGO
 boton_reglas = tk.Button(
     pantalla_menu, text="📖  Reglas del juego", font=("Segoe UI Emoji", 11),
     bg=CASILLA, fg=TEXTO, activebackground=CASILLA_HOVER,

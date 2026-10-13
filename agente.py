@@ -3,7 +3,6 @@ import random
 HUMANO = "X"
 AGENTE = "O"
 
-
 def obtener_ganador(tablero):
     combinaciones = [
         (0, 1, 2), (3, 4, 5), (6, 7, 8),
@@ -16,7 +15,6 @@ def obtener_ganador(tablero):
             return tablero[a]
     return None
 
-
 def buscar_jugada_ganadora(tablero, ficha):
     for posicion in range(9):
         if tablero[posicion] == "":
@@ -27,11 +25,9 @@ def buscar_jugada_ganadora(tablero, ficha):
                 return posicion
     return None
 
-
 def agente_facil(tablero):
     disponibles = [i for i in range(9) if tablero[i] == ""]
     return random.choice(disponibles) if disponibles else None
-
 
 def agente_medio(tablero):
     posicion = buscar_jugada_ganadora(tablero, AGENTE)
@@ -50,7 +46,6 @@ def agente_medio(tablero):
         return random.choice(esquinas)
 
     return agente_facil(tablero)
-
 
 def minimax(tablero, maximizando, profundidad=0):
     ganador = obtener_ganador(tablero)
@@ -96,7 +91,6 @@ def agente_dificil(tablero):
                 mejor_posicion = posicion
 
     return mejor_posicion
-
 
 def elegir_jugada(tablero, dificultad):
     if dificultad == "Fácil":
