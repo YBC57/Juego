@@ -2,9 +2,9 @@
 import tkinter as tk
 from tkinter import messagebox
 
-# -----------------------------
+
 # CONFIGURACIÓN
-# -----------------------------
+
 FONDO = "#172033"
 TEXTO = "#F8FAFC"
 AZUL = "#38BDF8"
@@ -20,10 +20,8 @@ botones = []
 partida_terminada = False
 turno_pendiente = None
 
-
-# -----------------------------
 # REGLAS DEL JUEGO
-# -----------------------------
+
 def obtener_ganador(estado):
     combinaciones = [
         (0, 1, 2), (3, 4, 5), (6, 7, 8),
@@ -37,8 +35,7 @@ def obtener_ganador(estado):
 
     return None
 
-
-def actualizar_estado():
+def actualizar_estado():    
     ganador = obtener_ganador(tablero)
 
     if ganador == HUMANO:
@@ -67,10 +64,8 @@ def finalizar_partida(mensaje):
 
     messagebox.showinfo("Fin de la partida", mensaje)
 
-
-# -----------------------------
 # TURNO DEL AGENTE
-# -----------------------------
+
 def turno_agente():
     global turno_pendiente
     turno_pendiente = None
@@ -78,17 +73,22 @@ def turno_agente():
     if partida_terminada:
         return
 
-    disponibles = [
-        i for i in range(9) if tablero[i] == ""
-    ]
+    # La IA selecciona una jugada según la dificultad elegida.
+    posicion = elegir_jugada(tablero.copy(), dificultad.get())
 
-    if not disponibles:
-        actualizar_estado()
+    # Comprobar que la jugada sea válida.
+    if (
+        posicion is None
+        or not isinstance(posicion, int)
+        or posicion < 0
+        or posicion >= 9
+        or tablero[posicion] != ""
+    ):
+        messagebox.showerror(
+            "Error del agente",
+            "La IA no pudo seleccionar una casilla válida."
+        )
         return
-
-    # Agente provisional: elige la primera casilla disponible.
-    # Posteriormente implementaremos los niveles de IA.
-    posicion = disponibles[0]
 
     tablero[posicion] = AGENTE
 
@@ -102,9 +102,8 @@ def turno_agente():
         estado_label.config(text="Tu turno: coloca una X")
 
 
-# -----------------------------
 # TURNO DEL JUGADOR
-# -----------------------------
+
 def jugar(posicion):
     global turno_pendiente
 
@@ -126,9 +125,9 @@ def jugar(posicion):
         turno_pendiente = ventana.after(400, turno_agente)
 
 
-# -----------------------------
+
 # REINICIAR PARTIDA
-# -----------------------------
+
 def reiniciar():
     global tablero, partida_terminada, turno_pendiente
 
@@ -155,9 +154,9 @@ def reiniciar():
     )
 
 
-# -----------------------------
+
 # INTERFAZ GRÁFICA
-# -----------------------------
+
 ventana = tk.Tk()
 ventana.title("Agentes Inteligentes - Tres en raya")
 ventana.configure(bg=FONDO)
@@ -180,9 +179,9 @@ y = max(0, (alto_pantalla - ALTO) // 2)
 ventana.geometry(f"{ANCHO}x{ALTO}+{x}+{y}")
 
 
-# -----------------------------
+
 # ENCABEZADO
-# -----------------------------
+
 titulo = tk.Label(
     ventana,
     text="TRES EN RAYA",
@@ -211,9 +210,9 @@ estado_label = tk.Label(
 estado_label.pack(pady=10)
 
 
-# -----------------------------
+
 # TABLERO 3 X 3
-# -----------------------------
+
 marco_tablero = tk.Frame(
     ventana,
     bg=FONDO
@@ -250,9 +249,9 @@ for fila in range(3):
         botones.append(boton)
 
 
-# -----------------------------
+
 # BOTÓN DE REINICIO
-# -----------------------------
+
 boton_reiniciar = tk.Button(
     ventana,
     text="Reiniciar partida",
